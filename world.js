@@ -1,6 +1,6 @@
 import {colorizeBackground, drawBoundries, drawTiles, fetchMapData} from "./utils.js";
 import {generatePlayerComponents, setPlayerMovement} from "./player.js";
-import {generateSlimeComponents} from "./slime.js";
+import {generateSlimeComponents, setSlimeAI} from "./slime.js";
 
 export default async function world(){
     colorizeBackground(76,170,255)
@@ -58,4 +58,8 @@ const entities = {
     })
 
     setPlayerMovement(entities.player)
+    for (const slime of entities.slimes){
+        setSlimeAI(slime)
+    }
+
 }

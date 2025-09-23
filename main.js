@@ -44,8 +44,19 @@ function start() {
 
                 },
                 "slime-idle-down":858,
+                "slime-idle-up":897,
+                "slime-idle-side":860,
+                "slime-down":{
+                    from:858, to: 859, loop:true
+                },
+                "slime-side":{
+                    from:860, to: 861, loop:true
+                },
+                "slime-up":{
+                    from:897, to: 898, loop:true
+                },
 
-            }
+            },
 
         });
     scene("world", world);   // no need to pass k

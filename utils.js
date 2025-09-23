@@ -4,6 +4,14 @@ export function playAnimIfNotPlaying(gameObj,animationName){
     }
 }
 
+export function areAnyOfTheseKeysDown(keys){
+    for (const key of keys){
+        if (isKeyDown(key)) return true
+    }
+    return false
+}
+
+
 export async function fetchMapData(mapPath){
     return await (await fetch(mapPath)).json()
 
