@@ -14,7 +14,6 @@ function initKaplay() {
 }
 
 
-
 function start() {
     initKaplay();// sets up global kaboom API
 

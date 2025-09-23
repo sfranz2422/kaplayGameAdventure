@@ -35,6 +35,7 @@ export function setPlayerMovement(player){
         }
 
         else if (["right","d"].includes(key)){
+
             player.flipX = false
             playAnimIfNotPlaying(player,"player-side")
             player.move(player.speed,0)
@@ -59,9 +60,10 @@ export function setPlayerMovement(player){
 
 
     }) // end of on key down
-    player.flipX = false
-    // playAnimIfNotPlaying(player,"player-idle-down")
-    player.play("player-idle-down")
-    // player.move(0,player.speed)
-    player.direction = "down"
+
+    onKeyRelease(()=>{
+        player.stop()
+    })
+
+
 }

@@ -40,7 +40,22 @@ const entities = {
 
 
     }
-setCamScale(4)
+    setCamScale(4)
     setCamPos(entities.player.worldPos())
+
+    onUpdate(()=>{
+        if (entities.player.pos.dist(camPos())){
+             tween(
+                camPos(),
+                entities.player.worldPos(),
+                0.15,
+                (val)=>{
+                    setCamPos(val)
+                },
+                easings.linear,
+            )
+        }
+    })
+
     setPlayerMovement(entities.player)
 }
