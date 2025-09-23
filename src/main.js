@@ -18,7 +18,7 @@ function initKaplay() {
 function start() {
     initKaplay();// sets up global kaboom API
 
-    loadSprite("assets", "/assets/topdownasset.png",
+    loadSprite("assets", "assets/topdownasset.png",
         {
             sliceX:39,
             sliceY:31,

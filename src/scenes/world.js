@@ -4,7 +4,7 @@ import {generateSlimeComponents} from "../entities/slime.js";
 
 export default async function world(){
     colorizeBackground(76,170,255)
-    const mapData = await fetchMapData("/assets/maps/world.json")
+    const mapData = await fetchMapData("assets/maps/world.json")
 const map = add([
     pos(0,0)
     ]
