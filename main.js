@@ -1,7 +1,7 @@
 
 import kaplay from "https://unpkg.com/kaplay@3001.0.19/dist/kaplay.mjs";
 
-import world from "./scenes/world.js"
+import world from "./world.js"
 
 // Create kaboom *when called*, not on import.
 function initKaplay() {
@@ -18,7 +18,7 @@ function initKaplay() {
 function start() {
     initKaplay();// sets up global kaboom API
 
-    loadSprite("assets", "assets/topdownasset.png",
+    loadSprite("assets", "topdownasset.png",
         {
             sliceX:39,
             sliceY:31,

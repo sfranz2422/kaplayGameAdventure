@@ -1,10 +1,10 @@
-import {colorizeBackground, drawBoundries, drawTiles, fetchMapData} from "../utils.js";
-import {generatePlayerComponents, setPlayerMovement} from "../entities/player.js";
-import {generateSlimeComponents} from "../entities/slime.js";
+import {colorizeBackground, drawBoundries, drawTiles, fetchMapData} from "./utils.js";
+import {generatePlayerComponents, setPlayerMovement} from "./player.js";
+import {generateSlimeComponents} from "./slime.js";
 
 export default async function world(){
     colorizeBackground(76,170,255)
-    const mapData = await fetchMapData("assets/maps/world.json")
+    const mapData = await fetchMapData("world.json")
 const map = add([
     pos(0,0)
     ]

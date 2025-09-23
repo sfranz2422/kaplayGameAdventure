@@ -1,4 +1,4 @@
-import {playAnimIfNotPlaying} from "../utils.js";
+import {playAnimIfNotPlaying} from "./utils.js";
 
 export function generatePlayerComponents(position){
     return [
