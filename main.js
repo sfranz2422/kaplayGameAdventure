@@ -1,5 +1,7 @@
 
-import kaplay from "https://unpkg.com/kaplay@3001.0.19/dist/kaplay.mjs";
+// import kaplay from "https://unpkg.com/kaplay@3001.0.19/dist/kaplay.mjs";
+import kaplay from "./kaplay.mjs";
+
 
 import world from "./world.js"
 import house from "./house.js";
