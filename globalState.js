@@ -4,6 +4,7 @@ export default function globalStateManager(){
  function createInstance(){
     let freezePlayer = false
     let fontSize = 30
+    let locale = "english"
     return {
         setFreezePlayer(value){
             freezePlayer = value
@@ -16,10 +17,20 @@ export default function globalStateManager(){
         },
         getFontSize(){
             return fontSize
+        },
+        setLocal(value){
+            locale = value
+        },
+        getLocal(){
+            return locale
         }
+
     }
 
-    return {
+   
+ }
+
+ return {
         getInstance(){
             if(!instance){
                 instance = createInstance()
@@ -27,7 +38,4 @@ export default function globalStateManager(){
             return instance
         }
     }
- }
-
-
 }

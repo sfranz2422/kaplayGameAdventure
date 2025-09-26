@@ -1,3 +1,7 @@
+import { gameState } from "./stateManager.js"
+
+
+
 async function displayLine(textContainer,line){
 
     for (const char of line){
@@ -13,6 +17,9 @@ async function displayLine(textContainer,line){
 
 
 export async function dialog(position,content){
+    gameState.setFreezePlayer(true)
+
+
     const dialogBox = add([
         rect(800,200),
         pos(position),
@@ -24,7 +31,7 @@ export async function dialog(position,content){
             font:"gameboy",
             width:700,
             lineSpacing:15,
-            size:30,
+            size:gameState.getFontSize(),
         }),
         color(27,29,52),
         pos(20,40),
@@ -42,6 +49,8 @@ export async function dialog(position,content){
         if (!content[index]){
             destroy(dialogBox)
             dialogKey.cancel()
+            gameState.setFreezePlayer(false)
+
             return
         }
         textContainer.text = ""

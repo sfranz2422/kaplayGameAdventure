@@ -1,5 +1,6 @@
 import { dialog } from "./dialog.js";
 import oldmanLines from "./oldmanDialog.js";
+import { gameState, oldManState } from "./stateManager.js";
 import { playAnimIfNotPlaying, returnRandomInteger } from "./utils.js"
 
 const directionalStates = [
@@ -45,9 +46,22 @@ export async function startInteraction(oldman,player){
     if (player.direction === "down"){
         playAnimIfNotPlaying(oldman,"oldman-up")
     }
-    const responses = oldmanLines["english"]
-    console.log(responses)
-    dialog(vec2(250,500),responses[0] )
+    const responses = oldmanLines[gameState.getLocal()]
+    // console.log(responses)
+
+
+
+    if (oldManState.getNbTalkedOldMan() > 2 ){
+        oldManState.setNbTalkedOldMan(1)
+       
+    }
+
+    if (responses[oldManState.getNbTalkedOldMan()]){
+        await dialog(vec2(250,500),responses[oldManState.getNbTalkedOldMan()] )
+        oldManState.setNbTalkedOldMan(oldManState.getNbTalkedOldMan()+1)
+
+    }
+
 }
 
 

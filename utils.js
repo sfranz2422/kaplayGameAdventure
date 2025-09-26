@@ -56,14 +56,14 @@ export function returnRandomInteger(num){
 export function parallaxBackground(){
  loadSprite("back", "back.png");
     const IMAGE_WIDTH = 1280
-    add([sprite("back"),pos(0,0)])
+    add([sprite("back"),pos(0,-50)])
 
     const layers = [
     {
         speed: -3,
         parts: [
-            add([sprite("back"), pos(0,0)],fixed()),
-            add([sprite("back"), pos(IMAGE_WIDTH, 0)]),
+            add([sprite("back"), pos(0,-50)],fixed()),
+            add([sprite("back"), pos(IMAGE_WIDTH,-50)]),
        ],
        //if other pictures add them here
     }

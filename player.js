@@ -1,3 +1,4 @@
+import { gameState } from "./stateManager.js";
 import {areAnyOfTheseKeysDown, playAnimIfNotPlaying} from "./utils.js";
 
 export function generatePlayerComponents(position){
@@ -26,6 +27,8 @@ export function generatePlayerComponents(position){
 export function setPlayerMovement(player){
     onKeyDown((key) => {
         // console.log(key)
+        if (gameState.getFreezePlayer()) return
+
 
         if (key === "left" && areAnyOfTheseKeysDown(["up", "down", "w", "s","a"]) === false){
             player.flipX = true
@@ -122,6 +125,17 @@ export function setPlayerMovement(player){
 
 
     }) // end of on key down
+
+
+    // onKeyPress((key),()=>{
+    //     if (key !=="space") return
+    //     if (gameState.getFreezePlayer()) return
+
+
+    // })
+
+
+
 
     onKeyRelease(()=>{
         player.stop()
