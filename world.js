@@ -1,9 +1,10 @@
-import {colorizeBackground, drawBoundries, drawTiles, fetchMapData} from "./utils.js";
+import {colorizeBackground, drawBoundries, drawTiles, fetchMapData, parallaxBackground} from "./utils.js";
 import {generatePlayerComponents, setPlayerMovement} from "./player.js";
 import {generateSlimeComponents, setSlimeAI} from "./slime.js";
 
 export default async function world(){
-    colorizeBackground(76,170,255)
+    // colorizeBackground(76,170,255)
+    parallaxBackground()
     const mapData = await fetchMapData("world.json")
 const map = add([
     pos(0,0)
@@ -61,5 +62,11 @@ const entities = {
     for (const slime of entities.slimes){
         setSlimeAI(slime)
     }
+
+
+    entities.player.onCollide("door-entrance",()=>{
+        go("house")
+    })
+
 
 }

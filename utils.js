@@ -49,6 +49,43 @@ let nbOfDrawnTiles = 0
     }
 }
 
+export function returnRandomInteger(num){
+    return Math.floor(Math.random()*num) + 1
+}
+
+export function parallaxBackground(){
+ loadSprite("back", "back.png");
+    const IMAGE_WIDTH = 1280
+    add([sprite("back"),pos(0,0)])
+
+    const layers = [
+    {
+        speed: -3,
+        parts: [
+            add([sprite("back"), pos(0,0)],fixed()),
+            add([sprite("back"), pos(IMAGE_WIDTH, 0)]),
+       ],
+       //if other pictures add them here
+    }
+]
+
+
+onUpdate(() => {
+  for (const layer of layers) {
+    if (layer.parts[1].pos.x < 0) {
+      layer.parts[0].moveTo(layer.parts[1].pos.x + IMAGE_WIDTH, 0);
+      layer.parts.push(layer.parts.shift());
+    }
+
+    layer.parts[0].move(layer.speed, 0);
+    layer.parts[1].move(layer.speed, 0);
+  }
+});
+
+
+
+} // end of parallaxBackground
+
 export function generateColliderBoxComponents(width, height,position,tag){
     return [
         area({

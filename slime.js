@@ -1,4 +1,4 @@
-import { playAnimIfNotPlaying } from "./utils.js"
+import { playAnimIfNotPlaying, returnRandomInteger } from "./utils.js"
 
 const directionalStates = [
                 "left",
@@ -38,11 +38,49 @@ export function generateSlimeComponents(position){
     ]
 }
 
+// function changeSlimeDirectionOnCollision(slime){
+//         if (slime.getCollisions().length > 0){
+//            slime.enterState(
+//             directionalStates[
+//                 Math.floor(Math.random()*directionalStates.length)
+//             ]
+//         )
+//             return
+//         }
+// }
 
 export function setSlimeAI(slime){
 // console.log(slime.states)
+
+
+    onUpdate(()=>{
+        switch (slime.state){
+            case "right":
+                slime.move(slime.speed,0)
+                break
+            case "left":
+                slime.move(-slime.speed,0)
+                break
+            case "up":
+                slime.move(0,-slime.speed)
+                break
+            case "down":
+                slime.move(0,slime.speed)
+                break
+            default:
+
+
+        }
+
+
+
+    })
+
+
+
     const idle = slime.onStateEnter("idle", async ()=>{
         slime.stop()
+        playAnimIfNotPlaying(slime,"slime-idle-side")
         await wait(3)
         slime.enterState(
             directionalStates[
@@ -53,52 +91,35 @@ export function setSlimeAI(slime){
     const right = slime.onStateEnter("right",async ()=>{
         slime.flipX = false
         playAnimIfNotPlaying(slime,"slime-side")
-        await wait(3)
+        await wait(returnRandomInteger(3))
+        slime.enterState("idle")
 
-        slime.enterState(
-            directionalStates[
-                Math.floor(Math.random()*directionalStates.length)
-            ]
-        )
+   
 
     })
     const left = slime.onStateEnter("left", async ()=>{
      slime.flipX = true
         playAnimIfNotPlaying(slime,"slime-side")
-        // slime.move(-slime.speed,0)
 
-        await wait(3)
-
-        slime.enterState(
-            directionalStates[
-                Math.floor(Math.random()*directionalStates.length)
-            ]
-        )
+        await wait(returnRandomInteger(3))
+        slime.enterState("idle")
     })
 
     const up = slime.onStateEnter("up",async ()=>{
  slime.flipX = false
         playAnimIfNotPlaying(slime,"slime-up")
-        await wait(3)
-
-        slime.enterState(
-            directionalStates[
-                Math.floor(Math.random()*directionalStates.length)
-            ]
-        )
+        await wait(returnRandomInteger(3))
+        
+        slime.enterState("idle")
 
     })
 
     const down = slime.onStateEnter("down",async ()=>{
 slime.flipX = false
         playAnimIfNotPlaying(slime,"slime-down")
-        await wait(3)
+        await wait(returnRandomInteger(3))
 
-        slime.enterState(
-            directionalStates[
-                Math.floor(Math.random()*directionalStates.length)
-            ]
-        )
+        slime.enterState("idle")
     })
 
     onSceneLeave(()=>{

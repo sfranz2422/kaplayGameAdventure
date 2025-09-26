@@ -2,6 +2,7 @@
 import kaplay from "https://unpkg.com/kaplay@3001.0.19/dist/kaplay.mjs";
 
 import world from "./world.js"
+import house from "./house.js";
 
 // Create kaboom *when called*, not on import.
 function initKaplay() {
@@ -14,9 +15,17 @@ function initKaplay() {
 }
 
 
+
+
+
+
+
+
+
 function start() {
     initKaplay();// sets up global kaboom API
-
+    loadFont("gameboy", "gb.ttf")
+   
     loadSprite("assets", "topdownasset.png",
         {
             sliceX:39,
@@ -43,9 +52,15 @@ function start() {
                     loop:true,
 
                 },
-                "slime-idle-down":858,
-                "slime-idle-up":897,
-                "slime-idle-side":860,
+                "slime-idle-down":{
+                    from:858, to: 859, loop:true
+                },
+                "slime-idle-up":{
+                    from:897, to: 898, loop:true
+                },
+                "slime-idle-side":{
+                    from:860, to: 861, loop:true
+                },
                 "slime-down":{
                     from:858, to: 859, loop:true
                 },
@@ -55,11 +70,15 @@ function start() {
                 "slime-up":{
                     from:897, to: 898, loop:true
                 },
+                "oldman-down":866,
+                "oldman-side":907,
+                "oldman-up":905,
 
             },
 
         });
     scene("world", world);   // no need to pass k
+    scene("house", house)
     go("world");
 }
 
